@@ -1,0 +1,43 @@
+<section class="login-section">
+  <form
+    ngForm
+    #f="ngForm"
+    fxLayoutAlign="center center"
+    (ngSubmit)="login(f)"
+    fxLayout="column"
+  >
+    <mat-form-field fxFlexOffset="10px">
+      <input
+        matInput
+        type="email"
+        placeholder="Email"
+        name="email"
+        ngModel
+        required
+        email
+      />
+      <mat-hint>Please enter a vaild email</mat-hint>
+    </mat-form-field>
+    <mat-form-field fxFlexOffset="10px">
+      <input
+        matInput
+        type="password"
+        placeholder="Password"
+        name="password"
+        ngModel
+        required
+      />
+      <mat-hint>Please enter a vaild password</mat-hint>
+    </mat-form-field>
+    <button  *ngIf="!(isLoading$ | async)"
+      fxFlexOffset="25px"
+      type="submit"
+      mat-raised-button
+      [disabled]="f.invalid"
+      color="primary"
+    >
+      login
+    </button>
+    <mat-spinner *ngIf="(isLoading$ | async)" ></mat-spinner>
+  </form>
+</section>
